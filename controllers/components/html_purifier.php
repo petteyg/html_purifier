@@ -24,6 +24,9 @@ class HtmlPurifierComponent extends Object {
 
 	function startup(&$controller) {
 		$this->PurifierConfig = HTMLPurifier_Config::createDefault();
+		foreach ($this->config as $k => $v) {
+			$this->PurifierConfig->set($k, $v);
+		}
 		$this->Purifier =& new HTMLPurifier($this->PurifierConfig);
 	}
 
