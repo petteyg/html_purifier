@@ -1,5 +1,5 @@
 <?php
-App::import('Vendor', 'HtmlPurifier.HTMLPurifier', array('file' => 'HtmlPurifier'.DS.'HTMLPurifier.standalone.php'));
+App::import('Vendor', 'HtmlPurifier.HTMLPurifier', array('file' => 'HtmlPurifier'.DS.'library'.DS.'HTMLPurifier.standalone.php'));
 //App::uses('HTMLPurifier.standalone', 'Vendor/HtmlPurifier');
 
 class HtmlPurifierComponent extends Component {
