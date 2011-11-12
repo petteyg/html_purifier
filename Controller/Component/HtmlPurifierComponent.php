@@ -1,14 +1,16 @@
 <?php
-App::import('Vendor', 'HtmlPurifier.HTMLPurifier', array('file' => 'htmlpurifier/HTMLPurifier.standalone.php'));
+App::import('Vendor', 'HtmlPurifier.HTMLPurifier', array('file' => 'HtmlPurifier'.DS.'HTMLPurifier.standalone.php'));
+//App::uses('HTMLPurifier.standalone', 'Vendor/HtmlPurifier');
 
-class HtmlPurifierComponent extends Object {
+class HtmlPurifierComponent extends Component {
 
 	var $config = array(
 		'Core.Encoding' => 'utf-8',
 		'HTML.DefinitionID' => 'CakePHP',
 		'HTML.DefinitionRev' => 1,
-		'HTML.TidyLevel' => 'medium',
-		'HTML.Doctype' => 'XHTML 1.0 Transitional'
+		'HTML.TidyLevel' => 'light',
+		'HTML.Doctype' => 'XHTML 1.0 Transitional',
+		'Output.TidyFormat' => false,
 	);
 
 	var $Purifier;
@@ -28,6 +30,12 @@ class HtmlPurifierComponent extends Object {
 			$this->PurifierConfig->set($k, $v);
 		}
 		$this->Purifier =& new HTMLPurifier($this->PurifierConfig);
+	}
+
+	function beforeRender(&$controller) {
+	}
+
+	function shutdown(&$controller) {
 	}
 
 	function purify($data) {
